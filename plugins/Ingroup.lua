@@ -129,7 +129,8 @@ local function check_member_modadd(cb_extra, success, result)
   local msg = cb_extra.msg
   for k,v in pairs(result.members) do
     local member_id = v.id
-    if member_id ~= our_id then
+
+if member_id ~= our_id then
       -- Group configuration
       data[tostring(msg.to.id)] = {
         group_type = 'Group',
@@ -223,28 +224,28 @@ local function check_member_modrem(cb_extra, success, result)
 end
 --End Check Member
 local function show_group_settingsmod(msg, data, target)
- 	if not is_momod(msg) then
-    	return "For moderators only!"
-  	end
-  	local data = load_data(_config.moderation.data)
+   if not is_momod(msg) then
+      return "For moderators only!"
+    end
+    local data = load_data(_config.moderation.data)
     if data[tostring(msg.to.id)] then
-     	if data[tostring(msg.to.id)]['settings']['flood_msg_max'] then
-        	NUM_MSG_MAX = tonumber(data[tostring(msg.to.id)]['settings']['flood_msg_max'])
-        	print('custom'..NUM_MSG_MAX)
-      	else 
-        	NUM_MSG_MAX = 5
-      	end
+       if data[tostring(msg.to.id)]['settings']['flood_msg_max'] then
+          NUM_MSG_MAX = tonumber(data[tostring(msg.to.id)]['settings']['flood_msg_max'])
+          print('custom'..NUM_MSG_MAX)
+        else 
+          NUM_MSG_MAX = 5
+        end
     end
     local bots_protection = "Yes"
     if data[tostring(msg.to.id)]['settings']['lock_bots'] then
-    	bots_protection = data[tostring(msg.to.id)]['settings']['lock_bots']
-   	end
+      bots_protection = data[tostring(msg.to.id)]['settings']['lock_bots']
+     end
     local leave_ban = "no"
     if data[tostring(msg.to.id)]['settings']['leave_ban'] then
-    	leave_ban = data[tostring(msg.to.id)]['settings']['leave_ban']
-   	end
+      leave_ban = data[tostring(msg.to.id)]['settings']['leave_ban']
+     end
   local settings = data[tostring(target)]['settings']
-  local text = "Group settings :\n_____________________\n📡lock group name : "..settings.lock_name.."\n📡lock group photo : "..settings.lock_photo.."\n📡lock group member : "..settings.lock_member.."\n📡lock leave : "..settings.leave_ban.."\n📡lock arabic : "..settings.lock_arabic.."\n📡lock english : "..settings.lock_english.."\n📡lock chat : "..settings.lock_chat.."\n📡lock join : "..settings.lock_join.."\n📡lock tag : "..settings.antitag.."\n📡lock link : "..settings.lock_ads.."\n📡flood sensitivity : "..NUM_MSG_MAX.."\n📡Bot protection : "..bots_protection.."\n_____________________\nRedteam"
+  local text = "⚙Group settings :\n_____________________\n⚡️lock group name : "..settings.lock_name.."\n⚡️lock group photo : "..settings.lock_photo.."\n⚡️lock group member : "..settings.lock_member.."\n⚡️lock leave : "..settings.leave_ban.."\n⚡️lock arabic : "..settings.lock_arabic.."\n⚡️lock english : "..settings.lock_english.."\n⚡️lock chat : "..settings.lock_chat.."\n⚡️lock join : "..settings.lock_join.."\n⚡️lock tag : "..settings.antitag.."\n⚡️lock link : "..settings.lock_ads.."\n⚡️flood sensitivity : "..NUM_MSG_MAX.."\n⚡️Bot protection : "..bots_protection.."\n_____________________\nUltronBot"
   return text
 end
 
@@ -707,7 +708,7 @@ local function realmadd(msg)
     receiver = get_receiver(msg)
     chat_info(receiver, check_member_realm_add,{receiver=receiver, data=data, msg = msg}) 
 end
--- Global functions
+--Global functions
 function modrem(msg)
   -- superuser and admins only (because sudo are always has privilege)
   if not is_admin(msg) then
@@ -998,7 +999,7 @@ local function run(msg, matches)
     return autorealmadd(msg)
   end
 
-  if msg.to.id and data[tostring(msg.to.id)] then
+if msg.to.id and data[tostring(msg.to.id)] then
     local settings = data[tostring(msg.to.id)]['settings']
     if matches[1] == 'chat_add_user' then
       if not msg.service then
@@ -1093,8 +1094,8 @@ local function run(msg, matches)
           local namehash = 'name:changed:'..msg.to.id..':'..msg.from.id
           local nameprotectionredis = redis:get(namehash) 
           if nameprotectionredis then 
-            if tonumber(nameprotectionredis) == 4 and not is_owner(msg) then 
-              kick_user(msg.from.id, msg.to.id)
+            if tonumber(nameprotectionredis) == 4 and not is_owner(msg) then
+               kick_user(msg.from.id, msg.to.id)
             end
             if tonumber(nameprotectionredis) ==  8 and not is_owner(msg) then 
               ban_user(msg.from.id, msg.to.id)
@@ -1140,16 +1141,16 @@ local function run(msg, matches)
       if not is_owner(msg) then
         return "Only owner can promote"
       end
-	local member = matches[2]
+  local member = matches[2]
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] promoted @".. member)
-	local cbres_extra = {
-	chat_id = msg.to.id,
+  local cbres_extra = {
+  chat_id = msg.to.id,
         mod_cmd = 'promote', 
-	from_id = msg.from.id
-	}
-	local username = matches[2]
-	local username = string.gsub(matches[2], '@', '')
-	return res_user(username, promote_demote_res, cbres_extra)
+  from_id = msg.from.id
+  }
+  local username = matches[2]
+  local username = string.gsub(matches[2], '@', '')
+  return res_user(username, promote_demote_res, cbres_extra)
     end
     if matches[1] == 'demote' and not matches[2] then
       if not is_owner(msg) then
@@ -1169,16 +1170,16 @@ local function run(msg, matches)
       if string.gsub(matches[2], "@", "") == msg.from.username and not is_owner(msg) then
         return "You can't demote yourself"
       end
-	local member = matches[2]
+  local member = matches[2]
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] demoted @".. member)
-	local cbres_extra = {
-	chat_id = msg.to.id,
+  local cbres_extra = {
+  chat_id = msg.to.id,
         mod_cmd = 'demote', 
-	from_id = msg.from.id
-	}
-	local username = matches[2]
-	local username = string.gsub(matches[2], '@', '')
-	return res_user(username, promote_demote_res, cbres_extra)
+  from_id = msg.from.id
+  }
+  local username = matches[2]
+  local username = string.gsub(matches[2], '@', '')
+  return res_user(username, promote_demote_res, cbres_extra)
     end
     if matches[1] == 'modlist' then
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group modlist")
@@ -1253,11 +1254,11 @@ local function run(msg, matches)
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked tag ")
        return lock_group_tag(msg, data, target)
       end
-	     if matches[2] == 'chat' then
+       if matches[2] == 'chat' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked chat ")
        return lock_group_chat(msg, data, target)
       end
-    if matches[2] == 'leave' then
+       if matches[2] == 'leave' then
        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked leaving ")
        return lock_group_leave(msg, data, target)
      end
@@ -1300,7 +1301,7 @@ local function run(msg, matches)
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked bots ")
         return unlock_group_bots(msg, data, target)
       end
-       if matches[2] == 'ads' then
+      if matches[2] == 'ads' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked ads ")
         return unlock_group_ads(msg, data, target)
        end
@@ -1337,7 +1338,7 @@ local function run(msg, matches)
       local target = msg.to.id
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group settings ")
       return show_group_settingsmod(msg, data, target)
-    end	
+    end  
 
  -- if matches[1] == 'public' then
     --local target = msg.to.id
@@ -1351,7 +1352,7 @@ local function run(msg, matches)
   --  end
  -- end
 
-    if matches[1] == 'newlink' and not is_realm(msg) then
+if matches[1] == 'newlink' and not is_realm(msg) then
       if not is_momod(msg) then
         return "For moderators only!"
       end
@@ -1451,7 +1452,7 @@ local function run(msg, matches)
         end
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] cleaned modlist")
       end
-      if matches[2] == 'rules' then 
+      if matches[2] == 'rules' then
         local data_cat = 'rules'
         data[tostring(msg.to.id)][data_cat] = nil
         save_data(_config.moderation.data, data)
@@ -1497,7 +1498,7 @@ local function run(msg, matches)
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] Used /help")
       return help()
     end
-    if matches[1] == 'info' and is_momod(msg) then 
+    if matches[1] == 'res' and is_momod(msg) then 
       local cbres_extra = {
         chatid = msg.to.id
       }
@@ -1508,15 +1509,15 @@ local function run(msg, matches)
     end
     if matches[1] == 'kickinactive' then
       --send_large_msg('chat#id'..msg.to.id, 'I\'m in matches[1]')
-	    if not is_momod(msg) then
-	      return 'Only a moderator can kick inactive users'
-	    end
-	    local num = 1
-	    if matches[2] then
-	        num = matches[2]
-	    end
-	    local chat_id = msg.to.id
-	    local receiver = get_receiver(msg)
+      if not is_momod(msg) then
+        return 'Only a moderator can kick inactive users'
+      end
+      local num = 1
+      if matches[2] then
+          num = matches[2]
+      end
+      local chat_id = msg.to.id
+      local receiver = get_receiver(msg)
       return kick_inactive(chat_id, num, receiver)
     end
   end 
@@ -1546,7 +1547,7 @@ return {
   "^[!/]([Ss]etowner) (%d+)$",
   "^[!/]([Ss]etowner)",
   "^[!/]([Oo]wner)$",
-  "^[!/]([Ii]nfo) (.*)$",
+  "^[!/](res) (.*)$",
   "^[!/]([Ss]etgpowner) (%d+) (%d+)$",-- (group id) (owner id)
   "^[!/]([Uu]nlock) (.*)$",
   "^[!/]([Ss]etflood) (%d+)$",
@@ -1580,7 +1581,7 @@ return {
   "^([Ss]etowner) (%d+)$",
   "^([Ss]etowner)",
   "^([Oo]wner)$",
-  "^([Ii]nfo) (.*)$",
+  "^(res) (.*)$",
   "^([Ss]etgpowner) (%d+) (%d+)$",-- (group id) (owner id)
   "^([Uu]nlock) (.*)$",
   "^([Ss]etflood) (%d+)$",
@@ -1597,7 +1598,3 @@ return {
   run = run
 }
 end
-
-
--- by hamed980
-
