@@ -1,4 +1,4 @@
-# [UltronBot](https://telegram.me/UltronTG)
+# [UtronallBot](https://telegram.me/UtronallBot)
 
 **An advanced and powerful administration bot based on [yagop/telegram-bot](https://github.com/yagop/telegram-bot) licensed under the [GNU General Public License](https://github.com/p00ria/UltronBot/blob/master/LICENSE)**.
 # Features
@@ -19,7 +19,7 @@
 * **And more!**
 
 **Table of Contents**
-- [UltronBot](#ultronbot)
+- [UtronallBot](#utronallbot)
 - [Features](#features)
 - [Commands](#commands)
 	- [Admins commands](#admins-commands)
@@ -88,7 +88,7 @@
 ### Group creation
 >[!/]creategroup [group name]
 >
->>[!/]creategroup Ultron
+>>[!/]creategroup Utronall
 >>>will create a group
 >>>
 >>>_Only works in realms for admins but, sudo users can use it everywhere_
@@ -96,7 +96,7 @@
 ### Realm creation
 >[!/]createrealm [realm name]
 >
->>[!/]createrealm Ultron
+>>[!/]createrealm Utronall
 >>>will create a realm
 >>>
 >>>_Only works in realms for admins but, sudo users can use it everywhere_
@@ -136,7 +136,7 @@
 
 ### Setting group name in realm
 > [!/]setname [group_id] [text]
->>[!/]setname 123456789 Ultron
+>>[!/]setname 123456789 Utronall
 >>>This command will set [text] as name of [group_id]
 
 ### Setting rules in realm
@@ -217,7 +217,7 @@
 >>>This command will set [User_id] as the owner of [group_id]
 
 ### Bot stats
->[!/]stats Ultron
+>[!/]stats Utronall
 >>This command will return bot stats
 
 # Realm Help
@@ -285,7 +285,7 @@ _Sudo users and admins can also use this commands in all groups_
 
 ### Changing Group name
 >[!/]setname [name]
->>[!/]setname Ultron
+>>[!/]setname Utronall
 >>>This command will set [name] as name of groups
 
 ### Group link
@@ -435,8 +435,8 @@ sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-d
 
 # Let's install the bot.
 cd $HOME
-git clone https://github.com/p00ria/UltronBot.git
-cd UltronBot
+git clone https://github.com/p00ria/UtronallBot.git
+cd UtronallBot
 chmod +x launch.sh
 ./launch.sh install
 ./launch.sh # Enter a phone number & confirmation code.
@@ -445,7 +445,7 @@ chmod +x launch.sh
 To install everything in one command (useful for VPS deployment) on Debian-based distros, use:
 ```sh
 #https://github.com/yagop/telegram-bot/wiki/Installation
-sudo apt-get update; sudo apt-get upgrade -y --force-yes; sudo apt-get dist-upgrade -y --force-yes; sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev libjansson* libpython-dev make unzip git redis-server g++ -y --force-yes && git clone https://github.com/p00ria/UltronBot.git && cd UltronBot && chmod +x launch.sh && ./launch.sh install && ./launch.sh
+sudo apt-get update; sudo apt-get upgrade -y --force-yes; sudo apt-get dist-upgrade -y --force-yes; sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev libjansson* libpython-dev make unzip git redis-server g++ -y --force-yes && git clone https://github.com/p00ria/UtronallBot.git && cd UtronallBot && chmod +x launch.sh && ./launch.sh install && ./launch.sh
 ```
 ### Realm configuration
 
