@@ -227,54 +227,17 @@ function create_config( )
     "Admin",
     "Plugins"
     },
-    sudo_users = {175636120,200857709},--Sudo users
+    sudo_users = {174770816},--Sudo users
     disabled_channels = {},
     moderation = {data = 'data/moderation.json'},
-    about_text = [[Uтʀoɴαll ʙoт V 1
-اوترونال بات ورژن 1 پر امکانات ترین روبات در تلگرام.
+    about_text = [[Just Kidding ʙoт V 1
+This Bot Not Created For Kidding :(
 
-کاری از تیم اولترون:
-Developer: @pooryanot
-------------------------
-Founder: @redteam_10_13
-_________________________
-Uтʀoɴαll ʙoт channel Team id is: @UltronTeam
-__________________________
-And source is coming soon....
-&
-سورس روبات در اینده اوپن خواهد شد.
-و میتوانید ان را رویه روبات خود نصب کنید.
-و با امکانات روبات روباته خوبی بسازید!
-Channel id: @UltronTeam
+Owners
 
-U🚀l🚀T🚀R🚀O🚀N ™
- ------------------------
- Developer:👊 
-  🔘 @pooryanot
- ______________________
- 👁‍🗨 ღεღʙɛʀ :✌️
- ______________________
- 1⃣ @programing_soft
- ----------------------
- 2⃣ @redteam_01_13 
- ----------------------
- 3⃣ @HeIsEhsan
- ----------------------
- 4⃣ @arian_IDeactive 
- ----------------------
- 5⃣ @hidden_hac
- ----------------------
- 6⃣ @Wqwq2112
- ----------------------
- 7⃣ @Mrlife
- ----------------------
- 8⃣ @SUDO_TEZAR
- ----------------------
- 9⃣ @sudo1
- ----------------------
- 🔟 @Rezashah21
+@Allwen 
 
-🗣goodbye👋
+Created By Allwen Team
 ]],
     help_text_realm = [[
 Realm Commands:
